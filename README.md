@@ -16,6 +16,11 @@ It will add an animated emoji at Magento admin panel login page in order to make
 
 > composer require redchamps/module-login-emoji
 
+## Extend it for Storefront
+
+You can use it on storefront as well. Look for sample layout file 
+> view/frontend/layout/customer_account_login_off.xml
+
 ## Authors
 
 - RedChamps [Maintainer] [![Twitter Follow](https://img.shields.io/twitter/follow/_redChamps.svg?style=social)](https://twitter.com/_redChamps)
