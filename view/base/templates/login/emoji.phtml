@@ -1,0 +1,56 @@
+<?php /* @var $block Magento\Framework\View\Element\Template */ ?>
+<div data-mage-init='{"RedChamps_LoginEmoji/js/lottie-player":{}}' class="emoji" style="display: table;margin: auto">
+    <div class="emoji-idle">
+        <lottie-player src="<?= $block->getViewFileUrl('RedChamps_LoginEmoji/files/MonkeyIdle.json'); ?>"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"   loop autoplay></lottie-player>
+    </div>
+    <div class="emoji-typing" style="display: none">
+        <lottie-player src="<?= $block->getViewFileUrl('RedChamps_LoginEmoji/files/MonkeyPeek.json'); ?>"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"></lottie-player>
+    </div>
+    <div class="emoji-tracking" style="display: none">
+        <lottie-player src="<?= $block->getViewFileUrl('RedChamps_LoginEmoji/files/MonkeyTracking.json'); ?>"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"></lottie-player>
+    </div>
+</div>
+<script>
+    window.addEventListener('load', function (){
+        var passwordField = document.querySelector('[type="password"]');
+        var usernameField = document.querySelector('[name="login[username]"]');
+        var trackingPlayer = document.querySelector('.emoji-tracking lottie-player');
+        var frame = 0;
+        var totalFrames = 170;
+        var userNameValue = null;
+        document.querySelector('[name="login[username]"]').addEventListener('keyup', function () {
+            if (frame > totalFrames && userNameValue && userNameValue.length > this.value.length) {
+                frame = frame-10;
+            }
+            if (((this.value != userNameValue && userNameValue) || (!userNameValue && this.value)) && frame <= totalFrames) {
+                document.querySelector('.emoji-idle').style.display='none';
+                document.querySelector('.emoji-typing').style.display='none';
+                document.querySelector('.emoji-tracking').style.display='block';
+                if (!userNameValue || userNameValue.length < this.value.length) {
+                    nextFrame = frame+10;
+                } else if(frame > 0) {
+                    nextFrame = frame-10;
+                }
+                trackingPlayer.getLottie().playSegments([frame, nextFrame], true);
+                frame = nextFrame;
+                userNameValue = this.value;
+            }
+        });
+        usernameField.addEventListener('focusout', function () {
+            document.querySelector('.emoji-idle').style.display='block';
+            document.querySelector('.emoji-tracking').style.display='none';
+        });
+        passwordField.addEventListener('focus', function () {
+            document.querySelector('.emoji-tracking').style.display='none';
+            document.querySelector('.emoji-idle').style.display='none';
+            document.querySelector('.emoji-typing').style.display='block';
+            document.querySelector('.emoji-typing lottie-player').stop();
+            document.querySelector('.emoji-typing lottie-player').play();
+        });
+        passwordField.addEventListener('focusout', function () {
+            document.querySelector('.emoji-tracking').style.display='none';
+            document.querySelector('.emoji-idle').style.display='block';
+            document.querySelector('.emoji-typing').style.display='none';
+        });
+    });
+</script>

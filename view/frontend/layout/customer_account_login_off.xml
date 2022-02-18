@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="form.additional.info">
+            <block class="Magento\Framework\View\Element\Template" name="customer.login.emoji" template="RedChamps_LoginEmoji::login/emoji.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="customer.login.emoji.js" template="RedChamps_LoginEmoji::login/emoji-js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
