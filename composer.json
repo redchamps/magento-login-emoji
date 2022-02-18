@@ -1,6 +1,6 @@
 {
     "name": "redchamps/module-login-emoji",
-    "description": "This Magento 2 module will add life to Magento login page(s).",
+    "description": "Inspired from Telegram web Login. It will add an interactive emoji on Magento admin login page.",
     "type": "magento2-module",
     "readme": "README.md",
     "license": [
